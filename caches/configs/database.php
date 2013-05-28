@@ -5,7 +5,7 @@ return array (
 		'hostname' => 'localhost',
 		'database' => 'ysdh',
 		'username' => 'root',
-		'password' => '123456',
+		'password' => '',
 		'tablepre' => 'ysdh_',
 		'charset' => 'utf8',
 		'type' => 'mysql',
