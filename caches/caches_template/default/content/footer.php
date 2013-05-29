@@ -1,15 +1,45 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><div class="footer">
-<p class="info">
-<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=e3d146232857be4579899ac97dbd2f7c&action=category&catid=1&num=15&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'1','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'15',));}?>
-<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-<a href="<?php echo $r['url'];?>" target="_blank"><?php echo $r['catname'];?></a> |  
-<?php $n++;}unset($n); ?>
-<?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
-<a href="<?php echo APP_PATH;?>index.php?m=link" target="_blank">友情链接</a>
-<br />
-Powered by <strong><a href="http://www.phpcms.cn" target="_blank">PHPCMS</a></strong> <em><?php echo get_pc_version(1);?></em> &copy; 2011 <img src="<?php echo IMG_PATH;?>copyright.gif"/><?php echo tjcode();?><?php echo runhook('glogal_footer')?>
-</p>
+	<div>2356789</div>
 </div>
+<script type="text/javascript">
+		$(function(){
+			$('.nav a:last').addClass('last');
+			$('.teacher .item :last').addClass('last');
+			$('.wrap .project :last').addClass('mt20');
+		});
+		
+	</script>
+	
+<script type="text/javascript">
+	$(function(){
+		$('.tab a').click(function(){
+			if($(this).attr('rel') == 'notice'){
+				$('.notice').show();
+				$('.news').hide();
+				$(this).addClass('active');
+				$(this).next().removeClass('active')
+			}else{
+				$('.notice').hide();
+				$('.news').show();
+				$(this).addClass('active');
+				$(this).prev().removeClass('active')
+			}
+			$(this).blur();
+			return false;
+		});
+
+
+		$('#slides2').slidesjs({
+			width: 940,
+			height: 328,
+			navigation: false,
+			start: 3,
+			play: {
+				auto: true
+			}
+		});
+	});
+</script>
 <script type="text/javascript">
 $(function(){
 	$(".picbig").each(function(i){

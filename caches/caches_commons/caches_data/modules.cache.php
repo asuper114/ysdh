@@ -506,5 +506,19 @@ return array (
     'installdate' => '2011-09-02',
     'updatedate' => '2011-09-02',
   ),
+  'baoming' => 
+  array (
+    'module' => 'baoming',
+    'name' => '网上报名',
+    'url' => 'baoming/',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '网上报名',
+    'setting' => '',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2013-05-23',
+    'updatedate' => '2013-05-23',
+  ),
 );
 ?>

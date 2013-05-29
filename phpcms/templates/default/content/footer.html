@@ -1,15 +1,45 @@
 <div class="footer">
-<p class="info">
-{pc:content action="category" catid="1" num="15" siteid="$siteid" order="listorder ASC"}
-{loop $data $r}
-<a href="{$r[url]}" target="_blank">{$r[catname]}</a> |  
-{/loop}
-{/pc}
-<a href="{APP_PATH}index.php?m=link" target="_blank">友情链接</a>
-<br />
-Powered by <strong><a href="http://www.phpcms.cn" target="_blank">PHPCMS</a></strong> <em>{get_pc_version(1)}</em> &copy; 2011 <img src="{IMG_PATH}copyright.gif"/>{tjcode()}{php echo runhook('glogal_footer')}
-</p>
+	<div>2356789</div>
 </div>
+<script type="text/javascript">
+		$(function(){
+			$('.nav a:last').addClass('last');
+			$('.teacher .item :last').addClass('last');
+			$('.wrap .project :last').addClass('mt20');
+		});
+		
+	</script>
+	
+<script type="text/javascript">
+	$(function(){
+		$('.tab a').click(function(){
+			if($(this).attr('rel') == 'notice'){
+				$('.notice').show();
+				$('.news').hide();
+				$(this).addClass('active');
+				$(this).next().removeClass('active')
+			}else{
+				$('.notice').hide();
+				$('.news').show();
+				$(this).addClass('active');
+				$(this).prev().removeClass('active')
+			}
+			$(this).blur();
+			return false;
+		});
+
+
+		$('#slides2').slidesjs({
+			width: 940,
+			height: 328,
+			navigation: false,
+			start: 3,
+			play: {
+				auto: true
+			}
+		});
+	});
+</script>
 <script type="text/javascript">
 $(function(){
 	$(".picbig").each(function(i){

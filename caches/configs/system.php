@@ -48,7 +48,7 @@ return array(
 'phpsso_auth_key' => 'TGfuNL1TXEmvt7dExPR4K4NKQkGcXR1I', //加密密钥
 'phpsso_version' => '1', //phpsso版本
 
-'html_root' => '/html',//生成静态文件路径
+'html_root' => '',//生成静态文件路径
 'safe_card'=>'1',//是否启用口令卡
 
 'connect_enable' => '1',	//是否开启外部通行证
