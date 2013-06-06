@@ -43,8 +43,8 @@ if(is_array($infos)){
 	<td align="center"><?php echo $info['email']?></td>
 	<td align="center"><?php echo $info['identity_card']?></td>
 	<td align="center"><?php echo $info['native_place']?></td>
-	<td align="center"><?php echo $info['diploma']?></td>
-	<td align="center"><?php echo $info['major']?></td>
+	<td align="center"><?php echo $diploma[$info['diploma']];?></td>
+	<td align="center"><?php echo $major[$info['major']]?></td>
 	</tr>
 <?php 
 	}
@@ -52,7 +52,7 @@ if(is_array($infos)){
 ?>
 </tbody>
     </table>
-     </div>
+  </div>
  <div id="pages"><?php echo $pages?></div>
 </form>
 </div>

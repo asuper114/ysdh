@@ -1,5 +1,5 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?><div class="footer">
-	<div>2356789</div>
+	<div>版权归现代管理大学－影视动画学院 电话：010-80305452 80305402 地址：北京房山区窦店镇</div>
 </div>
 <script type="text/javascript">
 		$(function(){

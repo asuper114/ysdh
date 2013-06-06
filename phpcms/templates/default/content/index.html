@@ -1,19 +1,20 @@
 {template "content","header"}
 <div class="container">
 		<div id="slides2">
-			<img src="{IMG_PATH}ysdh/example-slide-1.jpg" alt="">
-			<img src="{IMG_PATH}ysdh/example-slide-2.jpg" alt="">
-			<img src="{IMG_PATH}ysdh/example-slide-3.jpg" alt="">
-			<img src="{IMG_PATH}ysdh/example-slide-4.jpg" alt="">
+			{pc:content action="lists" catid="13" num="5" order="inputtime ASC"}
+			{loop $data $v}
+			<a href="{$v['url']}" target="_blank" ><img src="{$v['thumb']}" alt=""></a>
+			{/loop}
+			{/pc}
 		</div>
 
 	</div>
 
 	<div class="navbar2">
 		<div class="container">
-			<h2><i class="tel">电话</i><span>400-1234-1234</span></h2>
+			<h2><i class="tel">电话</i><span>010-8030-5452</span></h2>
 			<div>
-				<a href="#"><i class="info"></i>开班信息</a>
+				<a href="#"><i class="info"></i>课程设置</a>
 				<a href="#"><i class="teac"></i>师资队伍</a>
 				<a href="#"><i class="work"></i>就业保障</a>
 				<a href="#"><i class="hua"></i>学院环境</a>
@@ -33,9 +34,9 @@
 			{pc:content action="lists" catid="7" num="3" order="inputtime ASC"}
 			{loop $data $v}
 			<div class="item">
-				<img src="{$v['thumb']}" width="200" height="140" />
+				<a href="{$v['url']}" target="_blank" ><img src="{$v['thumb']}" width="200" height="140" /></a>
 				<dl>
-					<dt>{$v['title']}</dt>
+					<dt><a href="{$v['url']}" target="_blank" >{$v['title']}</a></dt>
 					<dd>{str_cut($v['description'],400,"")}</dd>
 				</dl>
 			</div>
@@ -157,43 +158,20 @@
 					<li><a href="#">影视管理</a> </li>
 				</ul>
 			</div>
-
+			{pc:content action="lists" catid="8" num="4" order="inputtime DESC"}
+			{loop $data $v}
 			<div class="item">
 				<dl>
-					<dt><img src="{IMG_PATH}ysdh/assets/z.jpg"> </dt>
+					<dt><img src="{$v['thumb']}"> </dt>
 					<dd>
-						<h4>《机械侠》</h4>
-						<p>这个理是好的这个理是好的这个理是好的</p>
+						<h4><a href="{$v['url']}" title="{$v['title']}" target="_blank"></h4>
+						<p>{str_cut($v['description'],100,"")}</p>
 					</dd>
 				</dl>
 			</div>
-			<div class="item">
-				<dl>
-					<dt><img src="{IMG_PATH}ysdh/assets/z.jpg"> </dt>
-					<dd>
-						<h4>《机械侠》</h4>
-						<p>这个理是好的这个理是好的这个理是好的</p>
-					</dd>
-				</dl>
-			</div>
-			<div class="item">
-				<dl>
-					<dt><img src="{IMG_PATH}ysdh/assets/z.jpg"> </dt>
-					<dd>
-						<h4>《机械侠》</h4>
-						<p>这个理是好的这个理是好的这个理是好的</p>
-					</dd>
-				</dl>
-			</div>
-			<div class="item">
-				<dl>
-					<dt><img src="{IMG_PATH}ysdh/assets/z.jpg"> </dt>
-					<dd>
-						<h4>《机械侠》</h4>
-						<p>这个理是好的这个理是好的这个理是好的</p>
-					</dd>
-				</dl>
-			</div>
+			{/loop}
+			 {/pc}
+			 
 		</div>
 	</div>
 

@@ -10,7 +10,6 @@
 <link href="<?php echo CSS_PATH;?>ysdh/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?php echo JS_PATH;?>jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo JS_PATH;?>jquery.slides.min.js"></script>
-<script type="text/javascript" src="<?php echo JS_PATH;?>search_common.js"></script>
 </head>
 <body>
 
