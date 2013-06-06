@@ -1,0 +1,15 @@
+label.labelerror { margin-left:4px;
+  background:url("unchecked.gif") no-repeat 0px 0px;
+  padding-left: 16px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  color: #EA5200;
+  width:200px;
+  
+}
+label.valid {
+  background:none;padding:0; margin:0; width:0; height:0;
+}
+label.checked {
+  background:url("checked.gif") no-repeat 0px 0px;
+}
