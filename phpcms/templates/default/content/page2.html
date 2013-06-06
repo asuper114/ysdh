@@ -1,0 +1,28 @@
+{template "content","header"}
+</div>
+
+<div class="container">
+	<div class="row crumbs">
+		<span>您现在的位置：</span>
+		<a href="{siteurl($siteid)}">首页</a><span>&gt;</span>
+		{catpos($catid)} 正文
+	</div>
+	<div class="row">
+		<div class="span9 t-info">
+			<div class="title"> {$CATEGORYS[$catid]['catname']}
+			</div>
+			
+			<div class="content">
+				{$content}
+				
+			</div>
+			
+		</div>
+
+		{template "content","right"}
+	</div>
+
+
+</div>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
+{template "content","footer"}

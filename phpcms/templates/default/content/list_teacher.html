@@ -1,0 +1,32 @@
+{template "content","header"}
+<!--main-->
+</div>
+
+
+<div class="container">
+
+	<div class="row">
+		<div class="span9 t-list">
+			<div class="title">
+				<h3>师资力量</h3>
+			</div>
+			{pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}
+			{loop $data $v}
+			<div class="item">
+				<a href="{$v['url']}" target="_blank"><img src="{$v['thumb']}" width="200" height="140" /></a>
+				<dl>
+					<dt><a href="{$v['url']}" target="_blank" >{$v['title']}</a></dt>
+					<dd>{str_cut($v['description'],400,"")}</dd>
+					<a href="{$v['url']}" target="_blank"  class="more-info">详细信息</a>
+				</dl>
+			</div>
+			{/loop}
+			{/pc}
+		</div>
+{template "content","right"}
+		
+	</div>
+
+
+</div>
+{template "content","footer"}

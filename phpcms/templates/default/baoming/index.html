@@ -1,0 +1,400 @@
+{template 'content', 'header'}
+<script type="text/javascript" src="{JS_PATH}jquery.metadata.js"></script>
+<script type="text/javascript" src="{JS_PATH}validation/jquery.validate.js"></script>
+<script type="text/javascript" src="{JS_PATH}validation/validate.lang-zh-CN.js"></script>
+<script type="text/javascript" src="{JS_PATH}validation/validate.password.js"></script>
+<script type="text/javascript" src="{JS_PATH}validation/jquery.form.js"></script>
+<link href="{JS_PATH}validation/validate.css" rel="stylesheet" type="text/css" />
+
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="{JS_PATH}dialog.js"></script>
+<script language="JavaScript">
+<!--
+$(function(){
+
+$("#myform").validate();
+
+});
+//-->
+</script>
+
+</div>
+<div class="container">
+
+	<div class="span9 t-apply">
+		<div class="title">
+			报名信息
+		</div>
+		<div class="apply">
+			<form action="" method="post" id="form">
+				<div class="row">
+					<label>姓&nbsp;&nbsp;名</label>
+					<input type="text" name="name" id="name" />
+				</div>
+				<div class="row">
+					<label>年&nbsp;&nbsp;龄</label>
+					<input type="text" name="age" id="age" />
+				</div>
+				<div class="row">
+					<label>Email</label>
+					<input type="text" name="email" id="email" />
+				</div>
+				<div class="row sex">
+					<label>性&nbsp;&nbsp;别</label>
+					<input id="radio-1" type="radio" name="sex" value="1" />
+					<label for="radio-1">男</label>
+					<input id="radio-2" type="radio" name="sex" value="0" />
+					<label for="radio-2">女</label>
+				</div>
+				<div class="row">
+					<label>联系手机</label>
+					<input type="text" name="phone" id="phone" />
+				</div>
+				<div class="row">
+					<label>身份证</label>
+					<input type="text" name="identity_card" id="identity_card" />
+				</div>
+				<div class="row date">
+					<label>出生年月</label>
+					<input type="text" name="birthday" style="display:none;" />
+					<input type="text" class="input-mini"  id="year" name="year" placeholder="年" />
+					<!-- <input type="text" class="input-mini"  id="month" name="month" placeholder="月" />
+					<input type="text" class="input-mini"  id="date" name="date" placeholder="日" /> -->
+					<select class="input-mini" >
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+				</div>
+				<div class="row">
+					<label>籍&nbsp;&nbsp;贯</label>
+					<input type="text" name="native_place" id="native_place" placeholder="填写省份信息" />
+				</div>
+				<div class="row">
+					<label>教育背景</label>
+					<select name="diploma" id="diploma" onchange="checkSelect(this,'学历不能为空');changeEducation(this);">
+						<option value=""></option>
+						<option value="1">初中</option>
+						<option value="2" selected="">高中</option>
+						<option value="3">中技</option>
+						<option value="4">中专</option>
+						<option value="5">大专</option>
+						<option value="6">本科</option>
+						<option value="7">硕士</option>
+						<option value="8">MBA</option>
+						<option value="9">博士</option>
+					</select>
+				</div>
+				<div class="row">
+					<label>专&nbsp;&nbsp;业</label>
+					<select name="major" id="major" >
+						<option value=""></option>
+						<option value="1">动画专业</option>
+						<option value="2">影视表演艺术</option>
+						<option value="3">影视美术设计</option>
+						<option value="4">编导</option>
+						<option value="5">摄影摄像</option>
+						<option value="6">影视管理</option>
+					</select>
+				</div>
+				<div class="row submit">
+					<input type="submit" value="提交" class="btn btn-primary"/>
+				</div>
+					<input type="hidden" name="issubmit" value="1">
+			</form>
+
+		</div>
+		
+		
+	</div>
+
+</div>
+<script type="text/javascript">
+	$(function(){
+		$("#year").focus(function(event){
+			var enabled = false;
+			event.stopPropagation();
+
+			var sender = $(this);
+			var offset = sender.offset();
+			var date = new Date();
+			
+			var template = $('<div id="overly"></div>');
+			function facYear(){
+				var curYear = date.getUTCFullYear();
+				var yarr = [];
+				for(var i=curYear - 26; i < curYear - 6; i++){
+					yarr.push(i);
+				}
+				var c = '';
+				for(var i in yarr){
+					template.append('\n<a href="#">'+yarr[i]+'</a>');
+				}
+				
+			}
+			facYear();
+			console.dir(sender);
+			template.css({
+				position:'absolute',
+				left:offset.left,
+				top:offset.top + sender[0].offsetHeight + 1,
+				width: 162,
+				background:'#fff'
+			}).appendTo('body').click(function(e){
+				e.stopPropagation();
+			});
+			template.find('a').click(function(e){
+				sender.val($(this).text());
+				closeOverly();
+				enabled = false;
+
+				return false;
+			});
+
+			setTimeout(function(){
+				$('body').unbind().bind('click', function(){
+					if(enabled){
+						closeOverly();
+						enabled = false;
+					}
+				});
+			}, 500);
+			enabled = true;
+		});
+
+		function closeOverly(){
+			$('#overly').remove();
+		}
+
+		$("#native_place").focus(function(event){
+			var enabled = false;
+			event.stopPropagation();
+
+			var sender = $(this);
+			var offset = sender.offset();
+			var date = new Date();
+			
+			var template = $('<div id="overly"></div>');
+			function facProv(){
+				for(var i in aCity){
+					template.append('\n<a href="#">'+aCity[i]+'</a>');
+				}
+				
+			}
+			facProv();
+			
+			template.css({
+				position:'absolute',
+				left:offset.left,
+				top:offset.top + sender[0].offsetHeight + 1,
+				width: 375,
+				background:'#fff'
+			}).appendTo('body').click(function(e){
+				e.stopPropagation();
+			});
+			template.find('a').css({
+				width:39,
+				display:'inline-block'
+			}).click(function(e){
+				sender.val($(this).text());
+				closeOverly();
+				enabled = false;
+
+				return false;
+			});
+
+			setTimeout(function(){
+				$('body').unbind().bind('click', function(){
+					if(enabled){
+						closeOverly();
+						enabled = false;
+					}
+				});
+			}, 500);
+			enabled = true;
+		});
+		
+		
+	});//end $(function)
+	var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"};
+	$(function(){
+
+		
+		function isIdCardNo(num) {
+			return false;
+			var factorArr = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1);
+			var parityBit = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
+			var varArray = new Array();
+			var intValue;
+			var lngProduct = 0;
+			var intCheckDigit;
+			var intStrLen = num.length;
+			var idNumber = num;
+			// initialize
+			if ((intStrLen != 15) && (intStrLen != 18)) {
+				return false;
+			}
+			if(aCity[parseInt(sId.substr(0,2))]==null){
+				return false; 
+			}
+			// check and set value
+			for (i = 0; i < intStrLen; i++) {
+				varArray[i] = idNumber.charAt(i);
+				if ((varArray[i] < '0' || varArray[i] > '9') && (i != 17)) {
+					return false;
+				} else if (i < 17) {
+					varArray[i] = varArray[i] * factorArr[i];
+				}
+			}
+			if (intStrLen == 18) {
+				//check date
+				var date8 = idNumber.substring(6, 14);
+				if (isDate8(date8) == false) {
+					return false;
+				}
+				// calculate the sum of the products
+				for (i = 0; i < 17; i++) {
+					lngProduct = lngProduct + varArray[i];
+				}
+					// calculate the check digit
+				intCheckDigit = parityBit[lngProduct % 11];
+				// check last digit
+				if (varArray[17] != intCheckDigit) {
+					return false;
+				}
+			}else {        //length is 15
+			//check date
+				var date6 = idNumber.substring(6, 12);
+				if (isDate6(date6) == false) {
+					return false;
+				}
+			}
+			return true;
+		}
+		function isDate6(sDate) {
+			if (!/^[0-9]{6}$/.test(sDate)) {
+				return false;
+			}
+			var year, month, day;
+			year = sDate.substring(0, 4);
+			month = sDate.substring(4, 6);
+			if (year < 1700 || year > 2500) return false
+			if (month < 1 || month > 12) return false
+			return true
+		}
+		/**
+		* 判断是否为“YYYYMMDD”式的时期
+		*
+		*/
+		function isDate8(sDate) {
+			if (!/^[0-9]{8}$/.test(sDate)) {
+				return false;
+			}
+			var year, month, day;
+			year = sDate.substring(0, 4);
+			month = sDate.substring(4, 6);
+			day = sDate.substring(6, 8);
+			var iaMonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+			if (year < 1700 || year > 2500) return false
+			if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) iaMonthDays[1] = 29;
+			if (month < 1 || month > 12) return false
+			if (day < 1 || day > iaMonthDays[month - 1]) return false
+			return true
+		}
+		jQuery.validator.addMethod("isIdCardNo", function (value, element) {
+			return this.optional(element) || isIdCardNo(value);
+		}, "请正确输入您的身份证号码");
+
+		jQuery.validator.addMethod("hanzi", function(value, element) {
+			return this.optional(element) ||  /^[\u0391-\uFFE5\w]+$/.test(value);
+		}, "含有非法字符");
+
+		$("#form").validate({
+			rules: {
+				name:{
+					required: true
+				},
+				age:{
+					required: true,
+					number:true
+				},
+				identity_card:{
+					isIdCardNo:true
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				phone:{
+					required: true,
+					digits:true,
+					maxlength:11,
+					minlength:11
+				},
+				identity_card:{
+					required: true
+				},
+				native_place:{
+					required: true
+				},
+				diploma:{
+					required: true
+				},
+				major:{
+					required: true
+				},
+				year:{
+					required: true
+				},
+				month:{
+					required: true
+				}
+			},
+			messages:{
+				email: {
+					email: '请输入正确格式的电子邮件'
+				}
+			}
+		});// end form
+	});
+	jQuery.extend(jQuery.validator.messages, {
+		required: "必选字段",
+		remote: "请修正该字段",
+		email: "请输入正确格式的电子邮件",
+		url: "请输入合法的网址",
+		date: "请输入合法的日期",
+		dateISO: "请输入合法的日期 (ISO).",
+		number: "请输入合法的数字",
+		digits: "只能输入整数",
+		creditcard: "请输入合法的信用卡号",
+		equalTo: "请再次输入相同的值",
+		accept: "请输入拥有合法后缀名的字符串",
+		maxlength: jQuery.validator.format("请输入一个 长度最多是 {0} 的字符串"),
+		minlength: jQuery.validator.format("请输入一个 长度最少是 {0} 的字符串"),
+		rangelength: jQuery.validator.format("请输入 一个长度介于 {0} 和 {1} 之间的字符串"),
+		range: jQuery.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+		max: jQuery.validator.format("请输入一个最大为{0} 的值"),
+		min: jQuery.validator.format("请输入一个最小为{0} 的值")
+	});
+</script>
+<script type="text/javascript" src="{JS_PATH}cookie.js"></script>
+<script language="JavaScript">
+<!--
+$(document).ready(function() {
+	var announcement = getcookie('announcement_{$memberinfo[userid]}_{$announceid}');
+	if(announcement==null || announcement=='') {
+		$("#announcement").fadeIn("slow");
+	}
+});
+//-->
+</script>
+{template 'content', 'footer'}

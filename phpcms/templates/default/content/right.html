@@ -1,0 +1,51 @@
+<div class="span3">
+			<div class="sidebar">
+				<div class="title">
+					<h4><i class="icon-align-right icon-white"></i>合作项目</h4>
+				</div>
+			
+				<div class="item">
+					{pc:content action="lists" catid="10" num="10" order="inputtime DESC"}
+					{loop $data $v}
+					<ul>
+						<li><a href="{$v['url']}" target="_blank">{str_cut($v['title'],46,"")}</a></li>
+					</ul>
+					{/loop}
+				
+				{/pc}
+				</div>
+			</div>
+
+
+			<div class="sidebar">
+				<div class="title">
+					<h4><i class="icon-pencil icon-white"></i>联系我们</h4>
+				</div>
+			
+				<div class="item service">
+					<ol>
+						<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2432099834&site=qq&menu=yes">点击咨询（汪老师）</a></li>
+						<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=529641064&site=qq&menu=yes">点击咨询（杨老师）</a></li>
+						<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=519453429&site=qq&menu=yes">点击咨询（程老师）</a></li>
+						<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=5357596&site=qq&menu=yes">点击咨询（苏老师）</a></li>
+					</ol>
+				</div>
+			</div>
+
+
+			<div class="sidebar">
+				<a href="{caturl(8)}" target="_balnk" class="view info">
+					<dd>开班信息<span>&gt;</span></dd>
+					<em>指导您挑选课程，合理安排学习良机</em>
+				</a>
+				<a href="{APP_PATH}/index.php?m=baoming&c=index"  target="_balnk" class="view bao">
+					<dd>网上报名<span>&gt;</span></dd>
+					<em>根据自身情况填写信息</em>
+				</a>
+				<a href="#" class="view tel">
+					<dd>服务热线<span>&gt;</span></dd>
+					<em>010-8030-5452</em>
+				</a>
+			</div>
+
+		</div>
