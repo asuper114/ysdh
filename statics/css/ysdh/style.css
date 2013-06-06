@@ -112,7 +112,7 @@ body{
 
 
 .teacher, .opus, .work-star{
-	margin: 0 0px 0 0;
+	margin: 0px 0px 0 0;
 }
 .item dl dt{
 	margin-left: 10px;
@@ -285,7 +285,7 @@ body{
 	border-bottom: 1px solid #cccccc;
 }
 .opus {
-	width: 100%;
+	width: 100%; margin-top:10px;
 }
 .opus h3{
 	background:url(../../images/ysdh/opus.png) no-repeat;
@@ -695,4 +695,34 @@ body{
 }
 #overly a{
 	margin: 5px;
+}
+
+
+.xyfj{ margin:0px; width:760px;}
+.xyfj ul li{ list-style:none; float:left; margin-left:10px;}
+.xyfj ul { margin-left:0px;}
+
+
+/* QQ浮层*/
+.contact_overly{
+	border:1px solid #366ea6;
+	background-color: #fff;
+	z-index: 999999;
+	width: 120px;
+	padding: 10px;
+	position: absolute;
+	top: 560px;
+	left: 30px;
+}
+.contact_overly ul li{
+	list-style: none;
+	margin: 3px 0;
+}
+.contact_overly ul{
+	margin: 0;
+	padding: 0;
+}
+.contact_overly dd, .contact_overly dl{
+	padding: 0;
+	margin: 0;
 }

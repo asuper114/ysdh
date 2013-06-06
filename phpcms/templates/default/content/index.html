@@ -1,180 +1,222 @@
 {template "content","header"}
 <div class="container">
-		<div id="slides2">
-			{pc:content action="lists" catid="13" num="5" order="inputtime ASC"}
-			{loop $data $v}
-			<a href="{$v['url']}" target="_blank" ><img src="{$v['thumb']}" alt=""></a>
-			{/loop}
-			{/pc}
-		</div>
-
-	</div>
-
-	<div class="navbar2">
-		<div class="container">
-			<h2><i class="tel">电话</i><span>010-8030-5452</span></h2>
-			<div>
-				<a href="#"><i class="info"></i>课程设置</a>
-				<a href="#"><i class="teac"></i>师资队伍</a>
-				<a href="#"><i class="work"></i>就业保障</a>
-				<a href="#"><i class="hua"></i>学院环境</a>
-			</div>
-		</div>
-	</div>
-
+    <div id="slides2">
+        {pc:content action="lists" catid="13" num="5" order="inputtime ASC"}
+        {loop $data $v}<a href="{$v['url']}" target="_blank"><img src="{$v['thumb']}" alt=""></a>{/loop}
+        {/pc}
+    </div>
+</div>
+<div class="navbar2">
+    <div class="container">
+        <h2><i class="tel">电话</i><span>010-8030-5452</span></h2>
+        <div>
+            <a href="#"><i class="info"></i>课程设置</a>
+            <a href="#"><i class="teac"></i>师资队伍</a>
+            <a href="#"><i class="work"></i>就业保障</a>
+            <a href="#"><i class="hua"></i>学院环境</a>
+        </div>
+    </div>
+</div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="span9 teacher">
-			<div class="title">
-				<h3>师资力量</h3>
-			</div>
-			<div class="more"><a href="{caturl(7)}" target="_balnk">更多</a></div>
-			
-			{pc:content action="lists" catid="7" num="3" order="inputtime ASC"}
-			{loop $data $v}
-			<div class="item">
-				<a href="{$v['url']}" target="_blank" ><img src="{$v['thumb']}" width="200" height="140" /></a>
-				<dl>
-					<dt><a href="{$v['url']}" target="_blank" >{$v['title']}</a></dt>
-					<dd>{str_cut($v['description'],400,"")}</dd>
-				</dl>
-			</div>
-			{/loop}
-			{/pc}
-			
-		</div>
+    <div class="row">
+        <div class="span9 teacher">
+            <div class="title">
+                <h3>师资力量</h3>
+            </div>
+            <div class="more">
+                <a href="{caturl(7)}" target="_balnk">更多</a>
+            </div>
+            {pc:content action="lists" catid="7" num="3" order="inputtime ASC"}
+            {loop $data $v}
+            <div class="item">
+                <a href="{$v['url']}" target="_blank"><img src="{$v['thumb']}" width="200" height="140" /></a>
+                <dl>
+                    <dt>
+                        <a href="{$v['url']}" target="_blank">{$v['title']}</a>
+                    </dt>
+                    <dd>
+                        {str_cut($v['description'],400,"")}
+                    </dd>
+                </dl>
+            </div>
+            {/loop}
+            {/pc}
+        </div>
+        <div class="span3 m0 cooperation">
+            <div class="title">
+                <h3>合作项目</h3>
+            </div>
+            <div class="wrap">
+                <div class="more">
+                    <a href="{caturl(10)}" target="_balnk">更多</a>
+                </div>
+                {pc:content action="lists" catid="10" num="2" order="inputtime DESC"}
+                {loop $data $v}
+                <div class="project">
+                    <dl>
+                        <dt>
+                            <img src="{$v['thumb']}" width="200" height="140">
+                        </dt>
+                        <dd>
+                            {str_cut($v['description'],200,"")}
+                        </dd>
+                    </dl>
+                </div>
+                {/loop}
+                {/pc}
+            </div>
+        </div>
+    </div>
+    <div class="row prize">
+        <div class="item fluid">
+            <img src="{IMG_PATH}ysdh/assets/zs1.jpg">
+        </div>
+        <div class="item fluid">
+            <img src="{IMG_PATH}ysdh/assets/zs2.jpg">
+        </div>
+        <div class="item">
+            <img src="{IMG_PATH}ysdh/assets/zs3.jpg">
+        </div>
+        <div class="item">
+            <img src="{IMG_PATH}ysdh/assets/zs4.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9 work-star">
+            <div>
+                <div class="title">
+                    <h3>校园风采</h3>
+                </div>
+                <div class="more">
+                    <a href="#">更多</a>
+                </div>
+                <div class="span9 xyfj">
+                    <ul>
+                        {pc:content action="position" posid="2" order="listorder DESC" num="3" thumb="1"}
+                        {loop $data $v}
+                        <li>
+                            <a target="_blank" href="{$v['url']}"><img src="{$v['thumb']}" alt="{$v['title']}"  width="240" height="210"></a>
+                        </li>{/loop}
+                        {/pc}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="span3 m0 consult">
+            <div class="tab">
+                <a href="#" class="active" rel="notice">通知公告</a>
+                <a href="#" rel="news">学院新闻</a>
+            </div>
+            <div class="news" style="display:none;">
+                {pc:content action="lists" catid="12" num="7" order="inputtime DESC"}
+                <ul>
+                    {loop $data $v}
+                    <li>
+                        <a href="{$v['url']}" title="{$v['title']}" target="_blank">>{$v['title']}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/pc}
+            </div>
+            <div class="notice">
+                {pc:content action="lists" catid="11" num="7" order="inputtime DESC"}
+                <ul>
+                    {loop $data $v}
+                    <li>
+                        <a href="{$v['url']}" title="{$v['title']}" target="_blank">>{$v['title']}</a>
+                    </li>
+                    {/loop}
+                </ul>
+                {/pc}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12 opus">
+            <div class="title">
+                <h3>专业</h3>
+				<!--
+                <ul>
+                    <li>
+                        <a href="#">影视表演艺术</a>
+                    </li>
+                    <li>
+                        <a href="#">影视美术设计</a>
+                    </li>
+                    <li>
+                        <a href="#">编导</a>
+                    </li>
+                    <li>
+                        <a href="#">摄影摄像</a>
+                    </li>
+                    <li>
+                        <a href="#">影视管理</a>
+                    </li>
+                </ul>
+				-->
+            </div>
+            {pc:content action="lists" catid="8" num="4" order="listorder ASC"}
+            {loop $data $v}
+            <div class="item">
+                <dl>
+                    <dt>
+                        <img src="{$v['thumb']}">
+                    </dt>
+                    <dd>
+                        <h4><a href="{$v['url']}" title="{$v['title']}" target="_blank">{$v['title']}</a></h4>
+                        <p>
+                            
+                        </p>
+                    </dd>
+                </dl>
+            </div>
+            {/loop}
+            {/pc}
+        </div>
+    </div>
+</div>
 
-		<div class="span3 m0 cooperation">
-			<div class="title">
-				<h3>合作项目</h3>
-			</div>
-			<div class="wrap">
-				<div class="more"><a href="{caturl(10)}" target="_balnk">更多</a></div>
-				{pc:content action="lists" catid="10" num="2" order="inputtime DESC"}
-				{loop $data $v}
-				<div class="project">
-					<dl>
-						<dt><img src="{$v['thumb']}" width="200" height="140"> </dt>
-						<dd>{str_cut($v['description'],200,"")}</dd>
-					</dl>
-				</div>
-				{/loop}
-				
-				{/pc}
-			</div>
-		</div>
+
+
+<div class="contact_overly">
+	<ul>
+		<li>
+			<a href="http://wpa.qq.com/msgrd?v=3&uin=2432099834&site=qq&menu=yes" target="_blank">
+				<img title="点击这里给我发消息" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:1192718421:41" border="0">
+			</a>汪老师
+		</li>
+		<li>
+			<a href="http://wpa.qq.com/msgrd?v=3&uin=529641064&site=qq&menu=yes" target="_blank">
+				<img title="点击这里给我发消息" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:1208684901:41" border="0">
+			</a>杨老师
+		</li>
+		<li>
+			<a href="http://wpa.qq.com/msgrd?v=3&uin=519453429&site=qq&menu=yes" target="_blank">
+				<img title="点击这里给我发消息" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:1633064613:41" border="0">
+			</a>程老师
+		</li>
+		<li>
+			<a href="http://wpa.qq.com/msgrd?v=3&uin=5357596&site=qq&menu=yes" target="_blank">
+				<img title="点击这里给我发消息" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:2224860137:41" border="0">
+			</a>苏老师
+		</li>
+		  
+		 
+	</ul>
+	<div>
+		<dl>
+			<dt>电话</dt>
+			<dd>010-80305452 <br />010-80305402<br /></dd>
+		</dl>
+		<dl>
+			<dt>传真</dt>
+			<dd>暂无</dd>
+		</dl>
+		<dl>
+			<dt>监督电话</dt>
+			<dd>18601339816</dd>
+		</dl>
 	</div>
-
-
-	<div class="row prize">
-		<div class="item fluid">
-			<img src="{IMG_PATH}ysdh/assets/zs1.jpg">
-		</div>
-		<div class="item fluid">
-			<img src="{IMG_PATH}ysdh/assets/zs2.jpg">
-		</div>
-		<div class="item">
-			<img src="{IMG_PATH}ysdh/assets/zs3.jpg">
-		</div>
-		<div class="item">
-			<img src="{IMG_PATH}ysdh/assets/zs4.jpg">
-		</div>
-	</div>
-
-
-
-
-	<div class="row">
-		<div class="span9 work-star">
-			<div>
-				<div class="title">
-					<h3>就业明星</h3>
-				</div>
-				<div class="more"><a href="#">更多</a></div>
-				<div class="span4 m0">
-					<img src="{IMG_PATH}ysdh/assets/sd.jpg" />
-				</div>
-				<div class="student span4 m0">
-					<div class="item">
-						<img src="{IMG_PATH}ysdh/assets/s.jpg" />
-						<dl>
-							<dt>aaa</dt>
-							<dd>bbbb</dd>
-						</dl>
-					</div>
-					<div class="item">
-						<img src="{IMG_PATH}ysdh/assets/s.jpg" />
-						<dl>
-							<dt>aaa</dt>
-							<dd>bbbb</dd>
-						</dl>
-					</div>
-					<div class="item">
-						<img src="{IMG_PATH}ysdh/assets/s.jpg" />
-						<dl>
-							<dt>aaa</dt>
-							<dd>bbbb</dd>
-						</dl>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="span3 m0 consult">
-			<div class="tab">
-				<a href="#" class="active" rel="notice">通知公告</a>
-				<a href="#" rel="news">学院新闻</a>
-			</div>
-			<div class="news" style="display:none;">
-				{pc:content action="lists" catid="12" num="7" order="inputtime DESC"}
-				<ul>
-					{loop $data $v}
-					<li><a href="{$v['url']}" title="{$v['title']}" target="_blank">>{$v['title']}</a></li>
-					{/loop}
-				</ul>
-				{/pc}
-			</div>
-			<div class="notice" >
-				{pc:content action="lists" catid="11" num="7" order="inputtime DESC"}
-				<ul>
-					{loop $data $v}
-					<li><a href="{$v['url']}" title="{$v['title']}" target="_blank">>{$v['title']}</a></li>
-					{/loop}
-				</ul>
-				{/pc}
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="span12 opus">
-			<div class="title">
-				<h3>专业</h3>
-				<ul>
-					<li><a href="#">影视表演艺术</a> </li>
-					<li><a href="#">影视美术设计</a> </li>
-					<li><a href="#">编导</a> </li>
-					<li><a href="#">摄影摄像</a> </li>
-					<li><a href="#">影视管理</a> </li>
-				</ul>
-			</div>
-			{pc:content action="lists" catid="8" num="4" order="inputtime DESC"}
-			{loop $data $v}
-			<div class="item">
-				<dl>
-					<dt><img src="{$v['thumb']}"> </dt>
-					<dd>
-						<h4><a href="{$v['url']}" title="{$v['title']}" target="_blank"></h4>
-						<p>{str_cut($v['description'],100,"")}</p>
-					</dd>
-				</dl>
-			</div>
-			{/loop}
-			 {/pc}
-			 
-		</div>
-	</div>
-
-
 </div>
 {template "content","footer"}
